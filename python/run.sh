@@ -1,4 +1,6 @@
 cd ..
+#wget http://clair.eecs.umich.edu/aan/downloads/aandec2014.tar.gz
+#tar -zxf aandec2014.tar.gz
 mkdir CitationContext-DocumentSimilarityNetwork
 mkdir CitationContext2DocumentEmbedding
 mkdir CitationContextEmbedding
