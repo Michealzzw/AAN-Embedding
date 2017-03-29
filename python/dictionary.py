@@ -33,7 +33,7 @@ try:
     for file_name in file_object:
         docuNum = docuNum+1;
         if (docuNum % 100 ==0):
-            sys.stdout.write("%d wordNum: %d\r"%(docuNum,len(dictTF)))
+            sys.stdout.write("%d/26000 wordNum: %d\r"%(docuNum,len(dictTF)))
             sys.stdout.flush();
         paper_object = open(file_name[:-1]);
         docId = file_name.split("/")[-1].split('.')[0];
