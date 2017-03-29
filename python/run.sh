@@ -1,11 +1,11 @@
-
+cd ..
 mkdir CitationContext-DocumentSimilarityNetwork
 mkdir CitationContext2DocumentEmbedding
 mkdir CitationContextEmbedding
 mkdir CitationContextSimilarityNetwork
 mkdir CitationNetwork
 mkdir DocumentEmbedding
-
+cd python
 #python dictionary.py
 #python divide-paper-into-sentences.py
 #python CitationContext2vec-TF.py
