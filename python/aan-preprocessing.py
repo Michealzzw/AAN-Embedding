@@ -77,13 +77,13 @@ def calculateSimilarity(sens1, sens2):
 	#print similarity;
 	return similarity;
 
-	
+
 
 
 
 file_object = open('aan_testing.tsv')
 
-try:	
+try:
 	for line in file_object:
 		edges[line[:-1]] = 1;
 
@@ -93,7 +93,7 @@ finally:
 
 file_object = open('CitationContext.tsv')
 
-try:	
+try:
 	cur_id = "";
 	cur_context = "";
 	for line in file_object:
@@ -115,8 +115,8 @@ try:
 finally:
 	file_object.close()
 
-file_object = open('release/2013/acl-metadata.txt')
-try:	
+file_object = open('2014/acl-metadata.txt')
+try:
 	cur_id="";
 	for line in file_object:
 		list = line[:-1].split(' ');
@@ -130,9 +130,10 @@ try:
 				#print line[9:-2]
 finally:
 	file_object.close()
-file_object = open('release/2013/acl.txt')
+#file_object = open('release/2013/acl.txt')
+file_object = open('2014/acl.txt')
 
-try:	
+try:
 	for line in file_object:
 		list = line[:-1].split(' ==> ');
 		Id2Context = {};
@@ -210,6 +211,3 @@ for id1 in Link_Id2Id:
 		output.write(id1+'\t'+id2+"\t"+str(value)+"\n");
 		output.write(id2+'\t'+id1+"\t"+str(value)+"\n");
 output.close()
-
-
-
