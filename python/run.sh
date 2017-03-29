@@ -20,5 +20,5 @@ fi
 #python CitationContext2Document-TFIDF.py
 
 #After Word2vec training
-#python document2vec-Para2vec.py
-#python dictionary_vector.py
+python document2vec-Para2vec.py
+python dictionary_vector.py
