@@ -23,7 +23,7 @@ def dealContext(context):
     return worddict;
 
 
-
+print("Running ... Building CitationContext2Document-TFIDF");
 file_object = open('../CitationContext.tsv');
 
 preid ="";
@@ -53,7 +53,7 @@ for document in document2worddict:
     for word in document2worddict[document]:
         wordnum = wordnum + document2worddict[document][word];
     for word in document2worddict[document]:
-        output.write(word+":"+str(tool.TFIDF(document2worddict[document][word],wordnum,dictionary[word][1])+" ");
+        output.write(word+":"+tool.TFIDF(document2worddict[document][word],wordnum,dictionary[word][1])+" ");
     output.write("\n");
 
 output.close();
