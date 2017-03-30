@@ -12,6 +12,7 @@ sudo ./configure
 sudo make
 sudo make install
 cd ..
+g++ -lm -pthread -Ofast -march=native -Wall -funroll-loops -ffast-math -Wno-unused-result line.cpp -o line -lgsl -lm -lgslcblas
 LD_LIBRARY_PATH=/usr/local/lib
 export LD_LIBRARY_PATH
 input=~/AAN-Embedding/CitationNetwork/CitationNetwork.tsv
@@ -68,4 +69,5 @@ output=~/AAN-Embedding/CitationContextSimilarityNetwork/Goods-Based-Quality-vec.
 input=~/AAN-Embedding/CitationContextSimilarityNetwork/Goods-Based-Quantity.tsv
 output=~/AAN-Embedding/CitationContextSimilarityNetwork/Goods-Based-Quantity-vec.tsv
 ./line -train $input -output $output -order 1 -samples 100 -threads 4
+cd ../../
 fi
