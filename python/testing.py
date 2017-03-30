@@ -54,9 +54,9 @@ for file_path in file_path_object:
                 w_sum = w_sum + float(dim)*float(dim);
                 arr.append(float(dim));
             w_sum = math.sqrt(w_sum);
-            if (type_e==0):
-                for i in range(len(arr)):
-                    arr[i] = arr[i]/w_sum;
+            #if (type_e==0):
+            for i in range(len(arr)):
+                arr[i] = arr[i]/w_sum;
             vectors[docid] = arr;
     if (type_e==0):print "type : p2v,w2v";
     if (type_e==1):print "type : tfidf";
@@ -100,10 +100,10 @@ for file_path in file_path_object:
                             rank = rank+1;
                     output.write(a+"\t"+b+"\t"+str(rank)+"\n");
                 else:
-                    dist = tool.lineSimilarity(vec_owner,vectors[b]);
+                    dist = tool.norm_cosineSimilarity(vec_owner,vectors[b]);
                     rank = 0;
                     for vec in vectors:
-                        if (tool.lineSimilarity(vec_owner,vectors[vec])>dist):
+                        if (tool.norm_cosineSimilarity(vec_owner,vectors[vec])>dist):
                             rank = rank+1;
                     output.write(a+"\t"+b+"\t"+str(rank)+"\n");
     output.close();
