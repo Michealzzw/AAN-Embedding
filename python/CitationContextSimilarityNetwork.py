@@ -77,7 +77,7 @@ for suffix in suffixs:
             continue;
         if (edge_sum>tool.MAX_WEIGHT):
             edge_sum = tool.MAX_WEIGHT;
-        output.write("%s\t%lf\n"%(cocited,edge_sum));
+        output.write(cocited+"\t"+str(edge_sum)+"\n");
     output.close();
 
 suffix = "TFIDF";
@@ -104,5 +104,5 @@ for cocited in cocitedArr:
         continue;
     if (edge_sum>tool.MAX_WEIGHT):
         edge_sum = tool.MAX_WEIGHT;
-    output.write("%s\t%lf\n"%(cocited,edge_sum));
+    output.write(cocited+"\t"+str(edge_sum)+"\n");
 output.close();
