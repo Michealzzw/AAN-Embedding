@@ -80,7 +80,7 @@ for file_path in file_path_object:
         else:
             vec_owner = vectors[a];
             if (type_e == 1):
-                dist = tool.norm_tfidfSimilarity(vec_owner,vectors[b],dist);
+                dist = tool.norm_tfidfSimilarity(vec_owner,vectors[b]);
                 rank = 0;
                 for vec in vectors:
                     if (tool.norm_tfidfSimilarity(vec_owner,vectors[vec])>dist):
@@ -95,7 +95,7 @@ for file_path in file_path_object:
                             rank = rank+1;
                     output.write(a+"\t"+b+"\t"+str(rank)+"\n");
                 else:
-                    dist = tool.lineSimilarity(vec_owner,vectors[b],dist);
+                    dist = tool.lineSimilarity(vec_owner,vectors[b]);
                     rank = 0;
                     for vec in vectors:
                         if (tool.lineSimilarity(vec_owner,vectors[vec])<dist):
