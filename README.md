@@ -7,7 +7,7 @@
 paper-vectors.txt Para2vec的vector
 aan_testing.tsv 测试的link
 CitationContext.tsv 引文内容
-下载地址:
+下载地址:https://pan.baidu.com/s/1bMDGJW
 将文件解压在AAN-Embedding根目录，然后移到项目根目录
 mv AAN-Embedding-Data/* [项目目录的路径]
 
