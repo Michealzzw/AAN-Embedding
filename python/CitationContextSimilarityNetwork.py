@@ -98,6 +98,7 @@ for cocited in cocitedArr:
             edge_sum = edge_sum + tool.tfidfSimilarity(Cites[(owner+"=>"+a)],Cites[(owner+"=>"+b)]);
     if (edge_sum<0.0001):
         continue;
-    if (edge_sum>tool.MAX_WEIGHT) edge_sum = tool.MAX_WEIGHT;
+    if (edge_sum>tool.MAX_WEIGHT):
+        edge_sum = tool.MAX_WEIGHT;
     output.write(cocited+"\t"+str(edge_sum)+"\n");
 output.close();
