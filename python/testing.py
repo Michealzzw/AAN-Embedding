@@ -28,8 +28,12 @@ for file_path in file_path_object:
         type_e = 2;
     for line in file_object:
         if (len(line)<12):continue;
-        docid = line.split("\t")[0];
-        w_arr = line.split("\t")[1].split(' ')[:-1];
+        if ("\t" not in line):
+            docid = line.split(" ")[0];
+            w_arr = line.split(" ")[1:-1];
+        else:
+            docid = line.split("\t")[0];
+            w_arr = line.split("\t")[1].split(' ')[:-1];
         if (len(w_arr)<1):
             continue;
         if (':' in w_arr[0]):
