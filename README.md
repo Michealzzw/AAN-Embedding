@@ -25,16 +25,16 @@ CitationContextSimilarityNetwork
     3. Co-cited p2v ☑️
     4. Co-citing?
     5. 顾客-商品模型
-        1. 顾客一起用的越多越像
+        1. 顾客一起用的越多越像 co-citing/log(average())
         2. 顾客一起用的评价越一致越像
-        3. 商品一起被评价的顾客越多越像
+        3. 商品一起被评价的顾客越多越像 co-cited/log(average());
         4. 商品被顾客评价越一致越像
         5. 一致度除以总的cite数
 
 CitationContext-DocumentSimilarityNetwork
 4. CitationContext和Paper 的相似度
-    1. 与owner
-    2. 与target
+    1. 与owner ☑️
+    2. 与target ☑️
 
 CitationNetwork
 5. Citation网络

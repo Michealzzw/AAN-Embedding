@@ -10,7 +10,7 @@ output = open("result.tsv",'w');
 output.write("result_name\t")
 for metric in metrics:
     output.write("recall@"+str(metric)+"\t");
-output.write("not_found_num\n");
+output.write("not_found_num\ttotal\n");
 file_path_object = open("result_path.txt");
 for file_path in file_path_object:
     file_path = file_path[:-1];
@@ -33,7 +33,7 @@ for file_path in file_path_object:
                     res[i] = res[i]+1;
     for i in range(len(metrics)):
         output.write("%lf\t"%(res[i]*1.0/e_num));
-    output.write(str(nf)+"\n");
+    output.write(str(nf)+"\t"+str(e_num)+"\n");
 
 output.close();
 file_path_object.close();

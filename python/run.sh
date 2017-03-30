@@ -39,10 +39,12 @@ fi
 #python CitationContext2Document-TFIDF.py
 
 #After Word2vec training
-python dictionary_vector.py
-python document2vec-Para2vec.py
-python document2vec-Word2vec.py
-python CitationNetwork.py
-python CitationContextSimilarityNetwork.py
+#python dictionary_vector.py
+#python document2vec-Para2vec.py
+#python document2vec-Word2vec.py
+#python CitationNetwork.py
+#python CitationContextSimilarityNetwork.py
+python CitationContext-DocumentSimilarityNetwork.py
+python CustomerGoodsModel.py
 echo "Finish"
 fi
