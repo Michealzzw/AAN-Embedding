@@ -103,7 +103,7 @@ for file_path in file_path_object:
                     dist = tool.lineSimilarity(vec_owner,vectors[b]);
                     rank = 0;
                     for vec in vectors:
-                        if (tool.lineSimilarity(vec_owner,vectors[vec])<dist):
+                        if (tool.lineSimilarity(vec_owner,vectors[vec])>dist):
                             rank = rank+1;
                     output.write(a+"\t"+b+"\t"+str(rank)+"\n");
     output.close();
