@@ -3,6 +3,8 @@ import re;
 import math;
 import random;
 
+MAX_WEIGHT = 10.0;
+
 def loadDictionary():
     print("Load Dictionary");
     file_object = open('../dictionary.tsv');

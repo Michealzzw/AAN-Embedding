@@ -96,5 +96,8 @@ for cocited in cocitedArr:
     for owner in re_d2d[a]:
         if (owner in re_d2d[b] and (owner+"=>"+a) in Cites and (owner+"=>"+b) in Cites):
             edge_sum = edge_sum + tool.tfidfSimilarity(Cites[(owner+"=>"+a)],Cites[(owner+"=>"+b)]);
+    if (edge_sum<0.0001):
+        continue;
+    if (edge_sum>tool.MAX_WEIGHT) edge_sum = tool.MAX_WEIGHT;
     output.write(cocited+"\t"+str(edge_sum)+"\n");
 output.close();
