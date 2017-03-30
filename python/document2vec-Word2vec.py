@@ -55,8 +55,8 @@ outputCite.close();
 
 
 print("Running ... Building CitationContext2Document-Word2vec")
-file_object = open('../CitationContext2Document/CitationContext2Document-TF.tsv');
-outputCite = open('../CitationContext2Document/CitationContext2Document-Word2vec.tsv','w');
+file_object = open('../CitationContext2DocumentEmbedding/CitationContext2Document-TF.tsv');
+outputCite = open('../CitationContext2DocumentEmbedding/CitationContext2Document-Word2vec.tsv','w');
 docuNum = 0;
 for line in file_object:
     docuNum = docuNum+1;

@@ -1,4 +1,17 @@
 #!/bin/sh
+if [ "$1" = "clean" ]; then
+  cd ..
+  mv CitationContext-DocumentSimilarityNetwork
+  mv CitationContext2DocumentEmbedding
+  mv CitationContextEmbedding
+  mv CitationContextSimilarityNetwork
+  mv CitationNetwork
+  mv DocumentEmbedding
+  cd python
+  break
+else
+  echo "Starting"
+fi
 if [ "$1" = "install" ]; then
 find ../2014/papers_text/ -name "*.txt" -o -name "*.body" > ../2014/paper_path.txt
 cd ..
@@ -11,6 +24,7 @@ mkdir CitationContextSimilarityNetwork
 mkdir CitationNetwork
 mkdir DocumentEmbedding
 cd python
+break
 else
 echo "Starting"
 fi
@@ -23,3 +37,4 @@ fi
 python dictionary_vector.py
 python document2vec-Para2vec.py
 python document2vec-Word2vec.py
+python CitationNetwork.py

@@ -38,18 +38,18 @@ CitationContext-DocumentSimilarityNetwork
 
 CitationNetwork
 5. Citation网络
-    1. 1order Citation Network ⭕️
-    2. 2order Citation Network ⭕️
+    1. 1order Citation Network ☑️⭕️
+    2. 2order Citation Network ☑️⭕️
     3. 1+2 ?
-    4. Co-cited
-    5. Co-citing
-    6. CN + Co-cited N ⭕️
-    7. CN + Co-citing N ⭕️
+    4. Co-cited☑️
+    5. Co-citing☑️
+    6. CN + Co-cited N ☑️⭕️
+    7. CN + Co-citing N ☑️⭕️
 
 Line-modify
 6. 修改Line
     1. ab+bc+ca ？(等于ab，bc，ac三条边而已)
-    2. abc
+    2. abc ⭕️
 
 
 顾客消费行为得出顾客相似度
