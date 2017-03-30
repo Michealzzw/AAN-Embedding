@@ -1,8 +1,24 @@
 
+
+
+
+
 预处理完毕文件：
 paper-vectors.txt Para2vec的vector
 aan_testing.tsv 测试的link
 CitationContext.tsv 引文内容
+下载地址:
+将文件解压在AAN-Embedding根目录，然后移到项目根目录
+mv AAN-Embedding-Data/* [项目目录的路径]
+
+运行顺序：
+cd python
+./run.sh install
+                    //得到部分Embedding和Network，如果想重新运行可以./run.sh clean后再次运行
+./run_line.sh [项目目录的绝对路径]
+                    // eg.: ~/AAN-Embedding/  用Line得出剩下的Embedding
+./run_test.sh
+                    //测试
 
 
 DocumentEmbedding
@@ -30,6 +46,8 @@ CitationContextSimilarityNetwork
         3. 商品一起被评价的顾客越多越像 co-cited/log(average());
         4. 商品被顾客评价越一致越像
         5. 一致度除以总的cite数
+        顾客消费行为得出顾客相似度
+        顾客点评得出商品相似度
 
 CitationContext-DocumentSimilarityNetwork
 4. CitationContext和Paper 的相似度
@@ -50,7 +68,3 @@ Line-modify
 6. 修改Line
     1. ab+bc+ca ？(等于ab，bc，ac三条边而已)
     2. abc ⭕️
-
-
-顾客消费行为得出顾客相似度
-顾客点评得出商品相似度
