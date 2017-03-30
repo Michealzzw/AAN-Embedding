@@ -8,8 +8,8 @@ import tool;
 dictionary = tool.loadDictionary();
 
 
-print("Running CitationContext2vec-TF")
-print("Running CitationContext2vec-TFIDF")
+print("Running ... CitationContext2vec-TF")
+print("Running ... CitationContext2vec-TFIDF")
 pattern = re.compile("[a-z]+")
 def dealContext(context):
     context = context.lower();
