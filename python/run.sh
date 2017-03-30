@@ -1,12 +1,12 @@
 #!/bin/sh
 if [ "$1" = "clean" ]; then
   cd ..
-  rm CitationContext-DocumentSimilarityNetwork
-  rm CitationContext2DocumentEmbedding
-  rm CitationContextEmbedding
-  rm CitationContextSimilarityNetwork
-  rm CitationNetwork
-  rm DocumentEmbedding
+  rm -r CitationContext-DocumentSimilarityNetwork
+  rm -r CitationContext2DocumentEmbedding
+  rm -r CitationContextEmbedding
+  rm -r CitationContextSimilarityNetwork
+  rm -r CitationNetwork
+  rm -r DocumentEmbedding
   cd python
   break
 else
