@@ -15,7 +15,7 @@ for line in file_object:
     line = line[:-1];
     word = line.split(' ')[0];
     if (word in dictionary):
-        vectors[word] = line.split(' ')[1:];
+        vectors[word] = line.split(' ')[1:-1];
 
 file_object.close();
 

@@ -14,7 +14,7 @@ Citationcontext2Document2vectorNum = {};
 CitaionContext2vector = {};
 CitaionContext2vectorNum = {};
 
-print("Running ... Building CitationContext2vec-Para2vec")
+print("Load papaer vectors")
 file_object = open('../paper-vectors.txt');
 outputCite = open('../CitationContextEmbedding/CitationContext2vec-Para2vec.tsv','w');
 for line in file_object:
@@ -66,8 +66,9 @@ for line in file_object:
             document2vector[docId] = arr;
             document2vectorNum[docId] = 1;
 
+print("Running ... Building CitationContext2vec-Para2vec")
 for citeId in CitaionContext2vector:
-    outputCite.write(citeId+" ");
+    outputCite.write(citeId+"\t");
     paraNum = CitaionContext2vectorNum[citeId];
     vec = CitaionContext2vector[citeId];
     for i in range(len(vec)):
@@ -79,7 +80,7 @@ outputCite.close();
 print("Running ... Building document2vec-Para2vec")
 outputDocument = open('../DocumentEmbedding/document2vec-Para2vec.tsv','w');
 for docid in document2vector:
-    outputDocument.write(docid+" ");
+    outputDocument.write(docid+"\t");
     paraNum = document2vectorNum[docid];
     vec = document2vector[docid];
     for i in range(len(vec)):
@@ -92,7 +93,7 @@ outputDocument.close();
 print("Running ... Building CitationContext2Document-Para2vec")
 outputDocument = open('../CitationContext2DocumentEmbedding/CitationContext2Document-Para2vec.tsv','w');
 for docid in Citationcontext2Document2vector:
-    outputDocument.write(docid+" ");
+    outputDocument.write(docid+"\t");
     paraNum = Citationcontext2Document2vectorNum[docid];
     vec = Citationcontext2Document2vector[docid];
     for i in range(len(vec)):

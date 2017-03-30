@@ -50,11 +50,11 @@ file_object.close();
 file_object = open('../2014/paper_path.txt');
 
 
-print("Running ... Building documentEmbedding-TF")
-print("Running ... Building documentEmbedding-TFIDF")
+print("Running ... Building document2vec-TF")
+print("Running ... Building document2vec-TFIDF")
 
-outputDocu = open("../DocumentEmbedding/documentEmbedding-TF.tsv", 'w');
-outputDocuTFIDF = open("../DocumentEmbedding/documentEmbedding-TFIDF.tsv", 'w');
+outputDocu = open("../DocumentEmbedding/document2vec-TF.tsv", 'w');
+outputDocuTFIDF = open("../DocumentEmbedding/document2vec-TFIDF.tsv", 'w');
 try:
     docuNum = 0;
     for file_name in file_object:

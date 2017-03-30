@@ -7,16 +7,16 @@ CitationContext.tsv 引文内容
 
 DocumentEmbedding
 1. 不考虑citation生成的文本embedding
-    1. TFIDF?
-    2. word2vec
+    1. TFIDF ☑️
+    2. word2vec ☑️
     3. para2vec ☑️
 
 CitationContext2DocumentEmbedding
 2. CitationContext组成的文本embedding
     1.  TFIDF☑️
-    2. word2vec
+    2. word2vec ☑️
     3. para2vec☑️
-    4. OWNER+TARGET
+    4. OWNER+TARGET✖️，指向不明
 
 CitationContextSimilarityNetwork
 3. 根据CitationContext相关度组成的网络 (TFIDF,w2v,p2v)

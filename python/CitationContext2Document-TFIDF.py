@@ -24,6 +24,7 @@ def dealContext(context):
 
 
 print("Running ... Building CitationContext2Document-TFIDF");
+print("Running ... Building CitationContext2Document-TF");
 file_object = open('../CitationContext.tsv');
 
 preid ="";
@@ -46,15 +47,20 @@ for line in file_object:
         preid = "";
 
 output = open('../CitationContext2DocumentEmbedding/CitationContext2Document-TFIDF.tsv','w');
+outputTF = open('../CitationContext2DocumentEmbedding/CitationContext2Document-TF.tsv','w');
 
 for document in document2worddict:
     output.write(document+"\t");
+    outputTF.write(document+"\t");
     wordnum = 0;
     for word in document2worddict[document]:
         wordnum = wordnum + document2worddict[document][word];
+        outputTF.write(word+":"+str(document2worddict[document][word])+" ");
     for word in document2worddict[document]:
-        output.write(word+":"+tool.TFIDF(document2worddict[document][word],wordnum,dictionary[word][1])+" ");
+        output.write(word+":"+str(tool.TFIDF(document2worddict[document][word],wordnum,dictionary[word][1]))+" ");
     output.write("\n");
+    outputTF.write("\n");
 
 output.close();
+outputTF.close();
 file_object.close();
