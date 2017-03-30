@@ -11,7 +11,6 @@ if [ "$1" = "clean" ]; then
   cd python
 else
   if [ "$1" = "install" ]; then
-    find ../2014/papers_text/ -name "*.txt" -o -name "*.body" > ../2014/paper_path.txt
     cd ..
     wget http://clair.eecs.umich.edu/aan/downloads/aandec2014.tar.gz
     tar -zxf aandec2014.tar.gz
@@ -23,6 +22,7 @@ else
     mkdir DocumentEmbedding
     mkdir Result
     cd python
+    find ../2014/papers_text/ -name "*.txt" -o -name "*.body" > ../2014/paper_path.txt
   else
     echo "Starting"
   fi
