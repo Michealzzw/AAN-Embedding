@@ -4,11 +4,11 @@ PKU Ziwei Zheng
 
 运行
 -----
-#预处理完毕文件：
+# 预处理完毕文件：
 paper-vectors.txt Para2vec的vector<br>
 aan_testing.tsv 测试的link<br>
 CitationContext.tsv 引文内容<br>
-##下载地址:https://pan.baidu.com/s/1bMDGJW
+## 下载地址:https://pan.baidu.com/s/1bMDGJW
 将文件解压在AAN-Embedding根目录，然后移到项目根目录<br>
 mv AAN-Embedding-Data/* [项目目录的路径]<br>
 
