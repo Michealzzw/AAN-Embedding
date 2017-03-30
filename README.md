@@ -20,9 +20,9 @@ CitationContext2DocumentEmbedding
 
 CitationContextSimilarityNetwork
 3. 根据CitationContext相关度组成的网络 (TFIDF,w2v,p2v)
-    1. Co-cited TFIDF
-    2. Co-cited w2v
-    3. Co-cited p2v
+    1. Co-cited TFIDF ☑️
+    2. Co-cited w2v ☑️
+    3. Co-cited p2v ☑️
     4. Co-citing?
     5. 顾客-商品模型
         1. 顾客一起用的越多越像

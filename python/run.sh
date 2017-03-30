@@ -42,5 +42,6 @@ python dictionary_vector.py
 python document2vec-Para2vec.py
 python document2vec-Word2vec.py
 python CitationNetwork.py
-echo "Starting"
+python CitationContextSimilarityNetwork.py
+echo "Finish"
 fi
