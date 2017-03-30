@@ -27,6 +27,7 @@ for file_path in file_path_object:
     if ("-vec" in embedding_name):
         type_e = 2;
     for line in file_object:
+        if (len(line)<12):continue;
         docid = line.split("\t")[0];
         w_arr = line.split("\t")[1].split(' ')[:-1];
         if (len(w_arr)<1):
