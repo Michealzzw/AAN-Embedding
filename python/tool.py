@@ -5,6 +5,16 @@ import random;
 
 MAX_WEIGHT = 10.0;
 
+
+def lineSimilarity(vec1,vec2,minvalue=MAX_WEIGHT):
+	dist = 0.0;
+	for i in range(len(vec1)):
+		dist = dist + (vec1[i]-vec2[i])*(vec1[i]-vec2[i])
+		if (dist>minvalue):
+			break;
+	return dist;
+
+
 def loadDictionary():
     print("Load Dictionary");
     file_object = open('../dictionary.tsv');
@@ -41,3 +51,19 @@ def tfidfSimilarity(wl1, wl2):
         b = wl2[word];
         len2 = len2 + b*b;
     return res/math.sqrt(len1*len2);
+
+def norm_cosineSimilarity(vec1, vec2):
+    res = 0.0;
+    for i in range(len(vec1)):
+        res = res + vec1[i]*vec2[i];
+    return res;
+
+def norm_tfidfSimilarity(wl1, wl2,minvalue=MAX_WEIGHT):
+    res = 0.0;
+    for word in wl1:
+        a = wl1[word];
+        if (word in wl2):
+            res = res + a * wl2[word];
+            if (res>minvalue):
+                break;
+    return res;

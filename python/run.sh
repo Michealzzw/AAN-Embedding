@@ -7,6 +7,7 @@ if [ "$1" = "clean" ]; then
   rm -r CitationContextSimilarityNetwork
   rm -r CitationNetwork
   rm -r DocumentEmbedding
+  mkdir Result
   mkdir CitationContext-DocumentSimilarityNetwork
   mkdir CitationContext2DocumentEmbedding
   mkdir CitationContextEmbedding

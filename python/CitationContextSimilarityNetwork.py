@@ -93,7 +93,12 @@ for line in file_object:
     if (len(wl)>0):
         Cites[cite] = wl;
 file_object.close();
+docuNum = 0;
 for cocited in cocitedArr:
+    docuNum = docuNum+1;
+    if (docuNum % 100 ==0):
+        sys.stdout.write("%d/%d\r"%(docuNum,len(cocitedArr)))
+        sys.stdout.flush();
     a = cocited.split("\t")[0];
     b = cocited.split("\t")[1];
     edge_sum = 0.0;

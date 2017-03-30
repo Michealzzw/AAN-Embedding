@@ -3,3 +3,4 @@ find ../CitationContext-DocumentSimilarityNetwork/ -name "*-vec.tsv" >embedding_
 find ../CitationContext2DocumentEmbedding/ -name "*.tsv" >>embedding_path.txt
 find ../CitationContextSimilarityNetwork/ -name "*-vec.tsv" >>embedding_path.txt
 find ../CitationNetwork/ -name "*-vec.tsv" >>embedding_path.txt
+find ../DocumentEmbedding/ -name "*.tsv" >>embedding_path.txt
