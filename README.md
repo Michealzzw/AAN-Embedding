@@ -14,12 +14,9 @@ mv AAN-Embedding-Data/* [项目目录的路径]<br>
 
 ####  运行顺序：
     cd python
-    ./run.sh install
-//得到部分Embedding和Network，如果想重新运行可以./run.sh clean后再次运行<br>
-    ./run_line.sh [项目目录的绝对路径]
-// eg.: ~/AAN-Embedding/  用Line得出剩下的Embedding<br>
-    ./run_test.sh
-//测试<br>
+    ./run.sh install    //得到部分Embedding和Network，如果想重新运行可以./run.sh clean后再次运行
+    ./run_line.sh [项目目录的绝对路径]     // eg.: ~/AAN-Embedding/  用Line得出剩下的Embedding
+    ./run_test.sh                       //测试
 
 Embedding
 -------
