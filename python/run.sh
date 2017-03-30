@@ -1,17 +1,15 @@
 #!/bin/sh
 if [ "$1" = "clean" ]; then
   cd ..
-  mv CitationContext-DocumentSimilarityNetwork
-  mv CitationContext2DocumentEmbedding
-  mv CitationContextEmbedding
-  mv CitationContextSimilarityNetwork
-  mv CitationNetwork
-  mv DocumentEmbedding
+  rm CitationContext-DocumentSimilarityNetwork
+  rm CitationContext2DocumentEmbedding
+  rm CitationContextEmbedding
+  rm CitationContextSimilarityNetwork
+  rm CitationNetwork
+  rm DocumentEmbedding
   cd python
   break
 else
-  echo "Starting"
-fi
 if [ "$1" = "install" ]; then
 find ../2014/papers_text/ -name "*.txt" -o -name "*.body" > ../2014/paper_path.txt
 cd ..
@@ -38,3 +36,5 @@ python dictionary_vector.py
 python document2vec-Para2vec.py
 python document2vec-Word2vec.py
 python CitationNetwork.py
+echo "Starting"
+fi
