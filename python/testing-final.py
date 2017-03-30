@@ -13,6 +13,7 @@ for metric in metrics:
 output.write("not_found_num\n");
 file_path_object = open("result_path.txt");
 for file_path in file_path_object:
+    file_path = file_path[:-1];
     res = [];
     nf = 0;
     for metric in metrics:res.append(0);
@@ -23,6 +24,7 @@ for file_path in file_path_object:
     for line in file_object:
         e_num = e_num+1;
         line = line[:-1];
+        if (len(line.split("\t"))<3):continue;
         rank = int(line.split("\t")[2]);
         if (rank==-1):nf = nf +1;
         else:
