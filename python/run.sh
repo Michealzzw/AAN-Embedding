@@ -40,4 +40,6 @@ else
   python CitationContext-DocumentSimilarityNetwork.py
   python CustomerGoodsModel.py
   echo "Finish"
+  ./run_line.sh
+  ./run_test.sh
 fi
