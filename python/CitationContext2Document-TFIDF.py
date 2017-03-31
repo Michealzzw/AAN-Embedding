@@ -7,7 +7,12 @@ dictionary = tool.loadDictionary();
 
 document2worddict = {};
 pattern = re.compile("[a-z]+")
-
+test_edge = {};
+print("Load acl links and test links")
+file_object = open('../aan_testing.tsv');
+for line in file_object:
+    test_edge[line[:-2]] = 1;
+file_object.close();
 def dealContext(context):
     context = context.lower();
     context, number = re.subn("[ ]+", " ", context);
@@ -25,6 +30,7 @@ def dealContext(context):
 
 print("Running ... Building CitationContext2Document-TFIDF");
 print("Running ... Building CitationContext2Document-TF");
+
 file_object = open('../CitationContext.tsv');
 
 preid ="";
@@ -35,6 +41,9 @@ for line in file_object:
         wordpairs = dealContext(line[:-1].split("\t")[3]);
     else:
         nowid = line.split("\t")[1];
+        if (preid+" "+nowid in test_edge):
+            preid="";
+            continue;
         if (nowid in document2worddict):
             wordpairs_merge = document2worddict[nowid];
             for word in wordpairs:
@@ -46,6 +55,7 @@ for line in file_object:
             document2worddict[nowid] = wordpairs;
         preid = "";
 
+file_object.close();
 output = open('../CitationContext2DocumentEmbedding/CitationContext2Document-TFIDF.tsv','w');
 outputTF = open('../CitationContext2DocumentEmbedding/CitationContext2Document-TF.tsv','w');
 
@@ -60,6 +70,20 @@ for document in document2worddict:
         output.write(word+":"+str(tool.TFIDF(document2worddict[document][word],wordnum,dictionary[word][1]))+" ");
     output.write("\n");
     outputTF.write("\n");
+
+file_object = open('../DocumentEmbedding/document2vec-TF.tsv','w');
+for line in file_object:
+    docid = line.split("\t")[0];
+    if (docid not in document2worddict):
+        outputTF.write(line);
+file_object.close();
+file_object = open('../DocumentEmbedding/document2vec-TFIDF.tsv','w');
+for line in file_object:
+    docid = line.split("\t")[0];
+    if (docid not in document2worddict):
+        output.write(line);
+file_object.close();
+
 
 output.close();
 outputTF.close();

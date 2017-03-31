@@ -6,7 +6,12 @@ import tool;
 
 
 dictionary = tool.loadDictionary();
-
+test_edge = {};
+print("Load acl links and test links")
+file_object = open('../aan_testing.tsv');
+for line in file_object:
+    test_edge[line[:-2]] = 1;
+file_object.close();
 
 print("Running ... CitationContext2vec-TF")
 print("Running ... CitationContext2vec-TFIDF")
@@ -39,6 +44,9 @@ for line in file_object:
         wordpairs = dealContext(line[:-1].split("\t")[3]);
     else:
         nowid = line.split("\t")[1];
+        if (preid+" "+nowid in test_edge):
+            preid = "";
+            continue;
         if ((preid+"=>"+nowid)in cite2vec):
             tmp = cite2vec[(preid+"=>"+nowid)];
             for word in wordpairs:

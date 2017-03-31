@@ -13,7 +13,12 @@ Citationcontext2Document2vectorNum = {};
 
 CitaionContext2vector = {};
 CitaionContext2vectorNum = {};
-
+test_edge = {};
+print("Load acl links and test links")
+file_object = open('../aan_testing.tsv');
+for line in file_object:
+    test_edge[line[:-2]] = 1;
+file_object.close();
 print("Load papaer vectors")
 file_object = open('../paper-vectors.txt');
 outputCite = open('../CitationContextEmbedding/CitationContext2vec-Para2vec.tsv','w');
@@ -22,6 +27,7 @@ for line in file_object:
     word = line.split(' ')[0];
     if (("=>") in word):
         #outputCite.write(line+"\n");
+        if (word.split('>')[0][:-1]+" "+word.split('>')[1] in test_edge):continue;
         docId = word.split('>')[1];
         citeId = word.split('>')[0]+">"+word.split('>')[1];
         if (citeId in CitaionContext2vector):
@@ -100,6 +106,18 @@ for docid in Citationcontext2Document2vector:
         vec[i] = vec[i]/paraNum;
         outputDocument.write(str(vec[i])+' ');
     outputDocument.write("\n");
+    del document2vector[docid];
+
+
+
+for docid in document2vector:
+    outputDocument.write(docid+"\t");
+    vec = document2vector[docid];
+    for i in range(len(vec)):
+        outputDocument.write(str(vec[i])+' ');
+    outputDocument.write("\n");
+
+
 outputDocument.close();
 
 
