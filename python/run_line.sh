@@ -3,8 +3,6 @@ if [ ! $1 ]; then
   echo "Please input AAN-Embedding path"
   echo "eg.: ./run_line ~/AAN-Embedding/"
 else
-git clone https://github.com/tangjianpku/LINE
-cd LINE/linux
 wget http://mirrors.ustc.edu.cn/gnu/gsl/gsl-2.3.tar.gz
 tar -zxf gsl-2.3.tar.gz
 cd gsl-2.3
@@ -69,5 +67,4 @@ output=~/AAN-Embedding/CitationContextSimilarityNetwork/Goods-Based-Quality-vec.
 input=~/AAN-Embedding/CitationContextSimilarityNetwork/Goods-Based-Quantity.tsv
 output=~/AAN-Embedding/CitationContextSimilarityNetwork/Goods-Based-Quantity-vec.tsv
 ./line -train $input -output $output -order 1 -samples 100 -threads 4
-cd ../../
 fi

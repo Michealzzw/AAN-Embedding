@@ -4,3 +4,5 @@
 /Line-modify
 *.zip
 /copy
+/python/gsl-2.3
+*.tar.gz
