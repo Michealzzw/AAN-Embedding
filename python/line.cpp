@@ -297,7 +297,12 @@ void Update(real *vec_u, real *vec_v, real *vec_error, int label)
 	for (int c = 0; c != dim; c++) x += vec_u[c] * vec_v[c];
 	g = (label - FastSigmoid(x)) * rho;
 	for (int c = 0; c != dim; c++) vec_error[c] += g * vec_v[c];
-	for (int c = 0; c != dim; c++) vec_v[c] += g * vec_u[c];
+	for (int c = 0; c != dim; c++)
+	{
+		vec_v[c] += g * vec_u[c];
+		if (vec_v[c]>1) vec_v[c] = 1.0;
+		if (vec_v[c]<-1) vec_v[c] = -1.0;
+	}
 }
 
 void *TrainLINEThread(void *id)
@@ -346,7 +351,12 @@ void *TrainLINEThread(void *id)
 			if (order == 1) Update(&emb_vertex[lu], &emb_vertex[lv], vec_error, label);
 			if (order == 2) Update(&emb_vertex[lu], &emb_context[lv], vec_error, label);
 		}
-		for (int c = 0; c != dim; c++) emb_vertex[c + lu] += vec_error[c];
+		for (int c = 0; c != dim; c++)
+		{
+			emb_vertex[c + lu] += vec_error[c];
+			if (emb_vertex[c + lu]>1) emb_vertex[c + lu] = 1.0;
+			if (emb_vertex[c + lu]<-1) emb_vertex[c + lu] = -1.0;
+		}
 
 		count++;
 	}
