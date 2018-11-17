@@ -19,7 +19,7 @@ file_object = open('../aan_testing.tsv');
 for line in file_object:
     test_edge[line[:-2]] = 1;
 file_object.close();
-print("Load papaer vectors")
+print("Load paper vectors")
 file_object = open('../paper-vectors.txt');
 outputCite = open('../CitationContextEmbedding/CitationContext2vec-Para2vec.tsv','w');
 for line in file_object:
@@ -72,6 +72,10 @@ for line in file_object:
             document2vector[docId] = arr;
             document2vectorNum[docId] = 1;
 
+
+
+print(len(Citationcontext2Document2vector));
+print(len(CitaionContext2vector));
 print("Running ... Building CitationContext2vec-Para2vec")
 for citeId in CitaionContext2vector:
     outputCite.write(citeId+"\t");
@@ -106,7 +110,9 @@ for docid in Citationcontext2Document2vector:
         vec[i] = vec[i]/paraNum;
         outputDocument.write(str(vec[i])+' ');
     outputDocument.write("\n");
-    del document2vector[docid];
+"""
+    if (docid in document2vector):
+        del document2vector[docid];
 
 
 
@@ -117,7 +123,7 @@ for docid in document2vector:
         outputDocument.write(str(vec[i])+' ');
     outputDocument.write("\n");
 
-
+"""
 outputDocument.close();
 
 
@@ -125,4 +131,3 @@ outputDocument.close();
 
 
 file_object.close();
-outputCite.close();

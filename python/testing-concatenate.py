@@ -17,12 +17,12 @@ file_object.close();
 
 
 file_path_object = open("embedding_path.txt");
+vectors = {};
 for file_path in file_path_object:
     file_path = file_path[:-1];
     embedding_name = file_path.split("/")[-1].split(".")[0];
     print("Running ... Test "+embedding_name);
     file_object = open(file_path);
-    vectors = {};
     type_e = 0;
     if ("-vec" in embedding_name):
         type_e = 2;
@@ -57,7 +57,12 @@ for file_path in file_path_object:
             #if (type_e==0):
             for i in range(len(arr)):
                 arr[i] = arr[i]/w_sum;
-            vectors[docid] = arr;
+            if (docid in vectors):
+                tmp = vectors[docid];
+                for i in range(len(arr)):
+                    tmp.append(arr[i]);
+            else:
+                vectors[docid] = arr;
     if (type_e==0):print "type : p2v,w2v";
     if (type_e==1):print "type : tfidf";
     if (type_e==2):print "type : line";
@@ -70,46 +75,37 @@ for file_path in file_path_object:
     #
 
     file_object.close();
-    output = open('../Result/result-'+embedding_name+'.tsv','w');
-    edgeNum = 0;
+output = open('../Result/result-concatenate.tsv','w');
+edgeNum = 0;
 
-    for edge in test_edge:
-        edgeNum = edgeNum+1;
-        if (edgeNum % 10 == 0):
-            sys.stdout.write("%d/%d\r"%(edgeNum,len(test_edge)))
-            sys.stdout.flush();
-        a = edge[0];
-        b = edge[1];
-        if (a not in vectors or b not in vectors):
-            output.write(a+"\t"+b+"\t-1\n");
+for edge in test_edge:
+    edgeNum = edgeNum+1;
+    if (edgeNum % 10 == 0):
+        sys.stdout.write("%d/%d\r"%(edgeNum,len(test_edge)))
+        sys.stdout.flush();
+    a = edge[0];
+    b = edge[1];
+    if (a not in vectors or b not in vectors):
+        output.write(a+"\t"+b+"\t-1\n");
+    else:
+        vec_owner = vectors[a];
+        if (type_e == 1):
+            dist = tool.norm_tfidfSimilarity(vec_owner,vectors[b]);
+            rank = 0;
+            for vec in vectors:
+                if (tool.norm_tfidfSimilarity(vec_owner,vectors[vec])>dist):
+                    rank = rank+1;
+                    if (rank>100):break;
+            output.write(a+"\t"+b+"\t"+str(rank)+"\n");
         else:
-            vec_owner = vectors[a];
-            if (type_e == 1):
-                dist = tool.norm_tfidfSimilarity(vec_owner,vectors[b]);
-                rank = 0;
-                for vec in vectors:
-                    if (tool.norm_tfidfSimilarity(vec_owner,vectors[vec])>dist):
-                        rank = rank+1;
-                        if (rank>100):break;
-                output.write(a+"\t"+b+"\t"+str(rank)+"\n");
-            else:
-                if (type_e == 0):
-                    dist = tool.norm_cosineSimilarity(vec_owner,vectors[b]);
-                    rank = 0;
-                    for vec in vectors:
-                        if (tool.norm_cosineSimilarity(vec_owner,vectors[vec])>dist):
-                            rank = rank+1;
-                            if (rank>100):break;
-                    output.write(a+"\t"+b+"\t"+str(rank)+"\n");
-                else:
-                    dist = tool.norm_cosineSimilarity(vec_owner,vectors[b]);
-                    rank = 0;
-                    for vec in vectors:
-                        if (tool.norm_cosineSimilarity(vec_owner,vectors[vec])>dist):
-                            rank = rank+1;
-                            if (rank>100):break;
-                    output.write(a+"\t"+b+"\t"+str(rank)+"\n");
-    output.close();
+            dist = tool.norm_cosineSimilarity(vec_owner,vectors[b]);
+            rank = 0;
+            for vec in vectors:
+                if (tool.norm_cosineSimilarity(vec_owner,vectors[vec])>dist):
+                    rank = rank+1;
+                    if (rank>100):break;
+            output.write(a+"\t"+b+"\t"+str(rank)+"\n");
+output.close();
 
 
 

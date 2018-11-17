@@ -1,11 +1,11 @@
 #!/bin/sh
-wget http://mirrors.ustc.edu.cn/gnu/gsl/gsl-2.3.tar.gz
-tar -zxf gsl-2.3.tar.gz
-cd gsl-2.3
-sudo ./configure
-sudo make
-sudo make install
-cd ..
+#wget http://mirrors.ustc.edu.cn/gnu/gsl/gsl-2.3.tar.gz
+#tar -zxf gsl-2.3.tar.gz
+#cd gsl-2.3
+#sudo ./configure
+#sudo make
+#sudo make install
+#cd ..
 g++ -lm -pthread -Ofast -march=native -Wall -funroll-loops -ffast-math -Wno-unused-result line.cpp -o line -lgsl -lm -lgslcblas
 LD_LIBRARY_PATH=/usr/local/lib
 export LD_LIBRARY_PATH

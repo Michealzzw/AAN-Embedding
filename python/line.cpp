@@ -36,9 +36,9 @@ struct ClassVertex {
 	char *name;
 };
 
-char network_file[MAX_STRING], embedding_file[MAX_STRING];
+char network_file[MAX_STRING], embedding_file[MAX_STRING], init_file[MAX_STRING];
 struct ClassVertex *vertex;
-int is_binary = 0, num_threads = 1, order = 2, dim = 100, num_negative = 5;
+int is_binary = 0, is_init = 0, num_threads = 1, order = 2, dim = 100, num_negative = 5;
 int *vertex_hash_table, *neg_table;
 int max_num_vertices = 1000, num_vertices = 0;
 long long total_samples = 1, current_sample_count = 0, num_edges = 0;
@@ -231,12 +231,42 @@ long long SampleAnEdge(double rand_value1, double rand_value2)
 /* Initialize the vertex embedding and the context embedding */
 void InitVector()
 {
+	char name[MAX_STRING];
 	long long a, b;
-
+	double sum = 0.0;
+	FILE *fi;
 	a = posix_memalign((void **)&emb_vertex, 128, (long long)num_vertices * dim * sizeof(real));
 	if (emb_vertex == NULL) { printf("Error: memory allocation failed\n"); exit(1); }
-	for (b = 0; b < dim; b++) for (a = 0; a < num_vertices; a++)
-		emb_vertex[a * dim + b] = (rand() / (real)RAND_MAX - 0.5) / dim;
+	if (is_init)
+	{
+		printf("Init Vector By File");
+		for (b = 0; b < dim; b++) for (a = 0; a < num_vertices; a++)
+			emb_vertex[a * dim + b] = (rand() / (real)RAND_MAX - 0.5) / dim;
+		fi = fopen(init_file, "rb");
+		while (fscanf(fi,"%s",name)==1)
+		{
+			a = SearchHashTable(name);
+			if (a==-1) continue;
+			sum = 0.0;
+			for (b = 0; b < dim; b++)
+			{
+				if (fscanf(fi,"%f",&emb_vertex[a * dim + b])!=1)
+					printf("\nInit File ERROR!!!!!a = %d b = % d\n",a,b);
+				sum += emb_vertex[a * dim + b]*emb_vertex[a * dim + b];
+			}
+			sum = sqrt(sum);
+			for (b = 0; b < dim; b++)
+			{
+				emb_vertex[a * dim + b]/=sum;
+			}
+		}
+		fclose(fi);
+	}
+	else
+	{
+		for (b = 0; b < dim; b++) for (a = 0; a < num_vertices; a++)
+			emb_vertex[a * dim + b] = (rand() / (real)RAND_MAX - 0.5) / dim;
+	}
 
 	a = posix_memalign((void **)&emb_context, 128, (long long)num_vertices * dim * sizeof(real));
 	if (emb_context == NULL) { printf("Error: memory allocation failed\n"); exit(1); }
@@ -459,6 +489,7 @@ int main(int argc, char **argv) {
 		return 0;
 	}
 	if ((i = ArgPos((char *)"-train", argc, argv)) > 0) strcpy(network_file, argv[i + 1]);
+	if ((i = ArgPos((char *)"-init", argc, argv)) > 0) { strcpy(init_file, argv[i + 1]);is_init = 1;}
 	if ((i = ArgPos((char *)"-output", argc, argv)) > 0) strcpy(embedding_file, argv[i + 1]);
 	if ((i = ArgPos((char *)"-binary", argc, argv)) > 0) is_binary = atoi(argv[i + 1]);
 	if ((i = ArgPos((char *)"-size", argc, argv)) > 0) dim = atoi(argv[i + 1]);

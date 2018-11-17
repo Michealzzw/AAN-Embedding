@@ -71,19 +71,20 @@ for document in document2worddict:
     output.write("\n");
     outputTF.write("\n");
 
-file_object = open('../DocumentEmbedding/document2vec-TF.tsv','w');
+"""
+file_object = open('../DocumentEmbedding/document2vec-TF.tsv');
 for line in file_object:
     docid = line.split("\t")[0];
     if (docid not in document2worddict):
         outputTF.write(line);
 file_object.close();
-file_object = open('../DocumentEmbedding/document2vec-TFIDF.tsv','w');
+file_object = open('../DocumentEmbedding/document2vec-TFIDF.tsv');
 for line in file_object:
     docid = line.split("\t")[0];
     if (docid not in document2worddict):
         output.write(line);
 file_object.close();
-
+"""
 
 output.close();
 outputTF.close();

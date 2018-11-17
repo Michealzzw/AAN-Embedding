@@ -54,6 +54,8 @@ def tfidfSimilarity(wl1, wl2):
 
 def norm_cosineSimilarity(vec1, vec2):
     res = 0.0;
+    if (len(vec1)!=len(vec2)):
+        return 0.0;
     for i in range(len(vec1)):
         res = res + vec1[i]*vec2[i];
     return res;
